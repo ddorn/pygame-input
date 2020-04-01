@@ -3,6 +3,17 @@ from typing import Dict, Union, Set
 
 import pygame
 
+__all__ = [
+    "Inputs",
+    "Button",
+    "Axis",
+    "QuitEvent",
+    "KeyPress",
+    "JoyButton",
+    "JoyAxisTrigger",
+    "JoyAxis",
+]
+
 
 def clamp(x, mini, maxi):
     """
@@ -11,7 +22,7 @@ def clamp(x, mini, maxi):
     If mini > maxi, just return x.
     """
 
-    if maxi > mini:
+    if maxi < mini:
         return x
     if x < mini:
         return mini
@@ -60,6 +71,7 @@ class KeyPress(ButtonInput):
 @dataclass(frozen=True)
 class JoyButton(ButtonInput):
     """Represent a joystick's button."""
+
     button: int
     joy_id: int = 0
 
@@ -106,6 +118,14 @@ class JoyAxisTrigger(ButtonInput):
     def pressed(self, event) -> bool:
         """Whether a matching event is a press or a release"""
         return self.above == (event.value > self.threshold)
+
+
+class QuitEvent(ButtonInput):
+    def match(self, event) -> bool:
+        return event.type == pygame.QUIT
+
+    def pressed(self, event) -> bool:
+        return True
 
 
 @dataclass(frozen=True)
@@ -168,7 +188,7 @@ class Button:
         self._on_press = set()
         self._on_release = set()
         self._on_double_press = set()
-        self._repeat : Set[RepeatCallback] = set()
+        self._repeat: Set[RepeatCallback] = set()
 
         self.last_press = float("-inf")
         """Time since last release of the button"""
@@ -282,7 +302,6 @@ class Button:
         to_remove = [rc for rc in self._repeat if rc.callback == callback]
         for rc in to_remove:
             self._repeat.remove(rc)
-
 
 
 class Axis:
@@ -402,4 +421,3 @@ class Inputs(dict, Dict[str, Union[Button, Axis]]):
         """Actualize buttons and axis."""
         for inp in self.values():
             inp.actualise(events)
-
