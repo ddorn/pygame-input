@@ -8,6 +8,14 @@ readme = "readme.md"
 repository = "https://gitlab.com/ddorn/pygame-input"
 homepage = "https://gitlab.com/ddorn/pygame-input"
 keywords = ['pygame', 'input', 'game', 'joystick']
+qualifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Games/Entertainment",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: pygame",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"

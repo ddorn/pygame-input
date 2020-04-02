@@ -1,6 +1,12 @@
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![](https://img.shields.io/badge/build%20system-poetry-ff69b5)](https://python-poetry.org/)
+[![Pypi Version](https://img.shields.io/pypi/v/pygame-input.svg)](https://pypi.python.org/pypi/PygameGUILib)
+[![Python Version](https://img.shields.io/pypi/pyversions/pygame-input.svg)](https://pypi.python.org/pypi/PygameGUILib)
+[![Pypi Downloads](https://img.shields.io/pypi/dm/pygame-input.svg)](https://pypi.python.org/pypi/pygame-input)
+
 pygame-input
 ========
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 `pygame-input` will simplify your input handling with pygame
 by providing a simple way to assign callbacks to given key press
@@ -64,8 +70,8 @@ See the [examples](examples).
 Contribute
 ----------
 
-- Issue Tracker: gitlab.com/ddorn/pygame-input/issues
-- Source Code: gitlab.com/ddorn/pygame-input
+- Issue Tracker: https://gitlab.com/ddorn/pygame-input/issues
+- Source Code: https://gitlab.com/ddorn/pygame-input
 
 Support
 -------
