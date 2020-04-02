@@ -67,8 +67,8 @@ Usage
 #### Defining the inputs
 The first step to be able to to register callbacks 
 is to create an `Inputs` object, which is bacically a 
-python's `dict` with an `actualise` method. We will 
-come back on `actualise` later. So:
+python's `dict` with a `trigger` method. We will 
+come back on `trigger` later. So:
 
 ```python
 from pygame_input import *
@@ -153,6 +153,68 @@ If you don't know about dataclasses, don't worry and consider that
 the attributes defined here are the parameters of `JoyAxis()`. Though
 feel free to check [what dataclasses are](https://realpython.com/python-data-classes/),
 because they're nice :)
+
+#### Adding callbacks
+
+Now that you know everything about defining the inputs, 
+we can add callbacks to them. Those two steps are different, 
+because they can happen at different places in the code. 
+For instance inputs definition can be in the main in on a settings screen.
+You may also want to add callbacks during the player creation
+and also register a callback on the camera when the player moves.
+
+Enough theory. There are 5 ways to add a callback `f` to a `Button`:
+ - `always_call(f)`:
+ - `on_press(f)`
+ - `on_release(f)`
+ - `on_double_press(f)`
+ - `on_press_repeated(f, delay)`
+ 
+Their names are self explanatory. `on_press_repeated` 
+accepts a `delay` argument: the callback will be called every `delay` seconds.
+
+**Each callback is always called with one argument: 
+the `Button` or `Axis` that triggered it.** 
+This way you can access the axis `value` or the button's `press_time`.
+
+For an `Axis` there only `always_call(f)` is available, since the others
+don't make sense. Example:
+
+```python
+inputs["fire"].on_press_repeated(player.fire, delay=0.5)
+inputs["hmove"].allways_call(player.horizontal_move)
+```
+
+#### Triggering callbacks
+
+To trigger the callbacks the only thing that is needed is 
+to call `inputs.trigger` with a list of the events 
+that happened since last frame.
+
+```python
+while True:
+    # Event handling
+    inputs.trigger(pygame.events.get())
+
+    # Game logic
+    ...
+
+    # Draw everything
+    ...
+
+    pygame.display.update()
+```
+
+**Note**: if you also need to process the events in a different way,
+you need to convert `pygame.events.get()` to a list first and use the list:
+
+```python
+events = list(pygame.events.get())
+inputs.trigger(events)
+for event in events:
+    if event.type == ...:
+        ...
+```
 
 For more, see the [examples](examples).
 

@@ -1,3 +1,4 @@
+import time as _time
 from dataclasses import dataclass
 from typing import Dict, Union, Set
 
@@ -413,12 +414,21 @@ class Axis:
 
 
 class Inputs(dict, Dict[str, Union[Button, Axis]]):
-    def trigger(self, dt):
-        """Trigger all callbacks and updates times"""
-        for inp in self.values():
-            inp.update(dt)
+    def __init__(self):
+        super().__init__()
+        self._last_time = _time.time()
 
-    def actualise(self, events):
-        """Actualize buttons and axis."""
+    def trigger(self, events):
+        """Trigger all callbacks when needed"""
+
+        # make sure we can iterate it multiple times
+        events = list(events)
         for inp in self.values():
             inp.actualise(events)
+
+        dt = _time.time() - self._last_time
+        self._last_time = _time.time()
+
+        for inp in self.values():
+            # update times and trigger callbacks
+            inp.update(dt)

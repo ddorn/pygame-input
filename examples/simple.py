@@ -28,7 +28,7 @@ def main():
         # to [0, 255]
         color[2] = int(127.5 * (axis.value + 1))
 
-     # Here we add the callback at the same place we define inputs
+    # Here we add the callback at the same place we define inputs
     # But it doesn't have to be that case, see more_complex.py for
     # more details.
     # Also ours functions are modifying a global state, but usually
@@ -47,8 +47,7 @@ def main():
         # Converting the event to a list is important
         # Otherwise we can only iterate them once
         events = list(pygame.event.get())
-        inputs.actualise(events)
-        inputs.trigger(clock.get_time() / 1000)
+        inputs.trigger(events)
 
         screen.fill(color)
         pygame.display.update()
@@ -56,5 +55,5 @@ def main():
         clock.tick(60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
