@@ -14,8 +14,6 @@ __all__ = [
     "JoyAxis",
 ]
 
-__version__ = "0.1"
-
 
 def clamp(x, mini, maxi):
     """
