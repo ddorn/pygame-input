@@ -132,10 +132,11 @@ class QuitEvent(ButtonInput):
 class JoyAxis:
     axis: int
     reversed: bool = False
-    """Whether the positive and negative should be reversed"""
-    sensibility: float = 1.0
+    """Whether the positive and negative should be reversed."""
     threshold: float = 0.2
-    """Any value of smaller magnitude will pe considered as zero"""
+    """Any value of smaller magnitude will be considered as zero."""
+    sensibility: float = 1.0
+    """Multiply the value by this amount. Useful if a joystick doesn't go all the way to +/-1"""
     joy_id: int = 0
     """The id used to initialise the joystick."""
 
