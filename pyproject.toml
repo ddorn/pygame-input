@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pygame-input"
-version = "0.1.1"
+version = "1.0.0"
 description = "pygame-input is a tool to simplify input handling with pygame"
 authors = ["Diego Dorn <pygame-input@lama-corp.space>"]
 license = "MIT"
@@ -8,8 +8,8 @@ readme = "readme.md"
 repository = "https://gitlab.com/ddorn/pygame-input"
 homepage = "https://gitlab.com/ddorn/pygame-input"
 keywords = ['pygame', 'input', 'game', 'joystick']
-qualifiers = [
-    "Development Status :: 4 - Beta",
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Topic :: Games/Entertainment",
