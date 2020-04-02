@@ -1,8 +1,8 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![](https://img.shields.io/badge/build%20system-poetry-ff69b5)](https://python-poetry.org/)
-[![Pypi Version](https://img.shields.io/pypi/v/pygame-input.svg)](https://pypi.python.org/pypi/PygameGUILib)
-[![Python Version](https://img.shields.io/pypi/pyversions/pygame-input.svg)](https://pypi.python.org/pypi/PygameGUILib)
+[![Poetry shield](https://img.shields.io/badge/build%20system-poetry-ff69b4.svg)](https://python-poetry.org/)
+[![Pypi Version](https://img.shields.io/pypi/v/pygame-input.svg)](https://pypi.python.org/pypi/pygame-input)
+[![Python Version](https://img.shields.io/pypi/pyversions/pygame-input.svg)](https://pypi.python.org/pypi/pygame-input)
 [![Pypi Downloads](https://img.shields.io/pypi/dm/pygame-input.svg)](https://pypi.python.org/pypi/pygame-input)
 
 pygame-input
